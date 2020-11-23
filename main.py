@@ -1,4 +1,4 @@
-from utils import readTextFile
+from utils import readTextFile, validMoves
 
 room_dim, robots, target_point, room = readTextFile() # calling the readTextFile() to grab all the important information from the input.txt file 
 
@@ -13,5 +13,11 @@ print("this is the target point or rendezvous point: ")
 print(target_point)
 print('\n')
 print("this is the room in a 2d list:")
-print(room)
+for i in range(0, int(room_dim[0])):
+    print(room[i])
+# -----------------------------------------------------------------------------------------------------------------------------------------------------------------#
+# -----------------------------------------------------Testing the validMoves()-------------------------------------------------------------------#
+print('\n')
+moves = validMoves(room, robots[1], room_dim)
+print(moves)
 # -----------------------------------------------------------------------------------------------------------------------------------------------------------------#
