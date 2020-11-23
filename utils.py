@@ -1,5 +1,8 @@
 def readTextFile():
-
+    """
+    Reads the input.txt file and returns the room dim (list), robots and their starting positions (dictionary),
+    target point (list), room (2d list)
+    """
     f = open("input.txt", "r") # opening input.txt file to access the information 
 
     lines = f.readlines() # reads every line in input.txt file stores each line in a list 
@@ -32,3 +35,30 @@ def readTextFile():
     return room_dim, robots, target_point, room
 
 
+def validMoves(room, pos, room_dim):
+    """
+    takes in a room (2d list), a pos (tuple) and room_dim (tuple).
+    Returns a list of tuples of the neighbouring spots. 
+    """
+
+    possible_moves = [] # where we will store tuples of possible moves that are valid
+
+    length = int(room_dim[0]) # the length of the room 
+    width = int(room_dim[1]) # the width of the room 
+
+    pos_row = int(pos[0]) # the pos row that we are moving from 
+    pos_col = int(pos[1]) # the pos col that we are moving from 
+
+    if pos_row - 1 >= 0: # checking if moving up is a valid move 
+        if room[pos_row-1][pos_col] == 0: possible_moves.append((pos_row-1, pos_col))
+
+    if pos_row + 1 <= length: # checking if moving down is a valid move 
+        if room[pos_row+1][pos_col] == 0: possible_moves.append((pos_row+1, pos_col))
+    
+    if pos_col - 1 >= 0: # cheching if moving left is a valid move
+        if room[pos_row][pos_col-1] == 0: possible_moves.append((pos_row, pos_col-1))
+
+    if pos_col + 1 <= width: # checking if moving right is a valid move 
+        if room[pos_row][pos_col+1] == 0: possible_moves.append((pos_row, pos_col+1))
+
+    return possible_moves
