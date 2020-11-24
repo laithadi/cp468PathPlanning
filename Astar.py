@@ -21,12 +21,34 @@ def Astar(current, goal, heuristic):
     
     # Run this loop whil there is still possible moves in the list.
     while len(open_list > 0):
-        temp = open_list[0]
-        moves = validMoves(temp) #switch validmoves to only take tmep which is the current node.
-        for move in moves:
+        currIndex = 0
+        currNode = open_list[0] #our current Node
+        closed_list.append(currNode)
+        moves = validMoves(currNode) #switch validmoves to only take tmep which is the current node.
+
+        for index, move in enumerate(open_list): #Might not need this
+            if (int(g_score + manhatton(move, goal))) < int(g_score + manhatton(currNode, goal)):
+                currNode = move
+                currIndex = index
+
+        open_list.pop() #pop off old move
+        closed_list.append(currNode) #Add best value to our closed list
+
+        for index, move in enumerate(moves):
             temp_score = int(g_score + manhatton(move, goal))
-            if temp_score < f_score:
-                f_score = temp_score
+            if move not in closed_list:
+                if temp_score < f_score: #Compare the closest node
+                    currNode = move #Assign our best move to currNode
+                    currIndex = index
+                    f_score = temp_score
+        open_list.append(currNode)
+            
+            
+
+        if currNode == goal:
+            return closed_list
+
+        
         
 
 
