@@ -62,3 +62,18 @@ def validMoves(room, pos, room_dim):
         if room[pos_row][pos_col+1] == 0: possible_moves.append((pos_row, pos_col+1))
 
     return possible_moves
+
+
+def targetReached(x1y1, x2y2):
+    """
+    Checks if two coordinates are the same.
+    x1y1 is a []
+    x2y2 is a ()
+    """
+
+    x1y1[0] = int(x1y1[0]) # changing the str elemnts in the list to an int to compare 
+    x1y1[1] = int(x1y1[1])
+
+    temp = (x1y1[0], x2y2[1])   # putting the coordinates in a () since x2y2 is a () so we can compare 
+
+    return temp == x2y2 
