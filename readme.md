@@ -31,7 +31,7 @@ function retunrn possibles moves from a given coordinate
 
 function to decide if all the robots are at the target point 
 
-
+result()
 
 
 
