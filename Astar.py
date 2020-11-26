@@ -9,6 +9,8 @@ def Astar(current, goal):
     and returns the path they take to get to the goal state
     using the Manhatton distance heuristic
     """
+    #TODO: currNode does not get updated
+    #Same value is being appended inside of closed_list
     curr_state = copy.deepcopy(current)
     goal_state = copy.deepcopy(goal)
 
@@ -25,11 +27,11 @@ def Astar(current, goal):
     while len(open_list)> 0:
         currIndex = 0
         currNode = open_list[0] #our current Node
-        closed_list.append(currNode)
-        moves = validMoves(ROOM, currNode,ROOMDIM ) #switch validmoves to only take tmep which is the current node.
+        #closed_list.append(currNode) #take out
+        moves = validMoves(ROOM, currNode, ROOMDIM ) #switch validmoves to only take tmep which is the current node.
 
         for index, move in enumerate(open_list): #Might not need this
-            print("Current {}, goal {}".format(move, goal))
+            #print("Current {}, goal {}".format(move, goal))
             if (int(g_score + manhatton(move, goal))) < int(g_score + manhatton(currNode, goal)):
                 currNode = move
                 currIndex = index
