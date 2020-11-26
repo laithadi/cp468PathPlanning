@@ -5,6 +5,8 @@ print("Welcome to our Path Planning Term Project :)")
 
 room_dim, robots, target_point, room = readTextFile() # calling the readTextFile() to grab all the important information from the input.txt file 
 
+print(target_point)
+
 robots = strToInt(robots) # turn all values in the robots value to int 
 r_keys = robots.keys() # grab all the keys in the robots dictionary 
 
