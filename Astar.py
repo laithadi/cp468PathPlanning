@@ -63,12 +63,15 @@ def manhatton(current, goal):
     """
     length = len(current)
     manhatton = 0
-    for x in range(length):
-        for y in range(length):
-            if current != (0,0):
-                (goalx, goaly) = get_index(goal, current)
-                manhatton += abs(x - goalx) + abs(y - goaly)
-    return manhatton
+
+
+    currX = current[0]
+    currY = current[1]
+
+    goalX = goal[0]
+    goalY = goal[1]
+
+    return abs(goalX - currX) + abs(goalY - currY)
 
 
 def get_index(array, value):
