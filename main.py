@@ -1,5 +1,5 @@
 from utils import *
-from Astar import Astar, manhatton
+from Astar import *
 
 print("Welcome to our Path Planning Term Project :)")
 
