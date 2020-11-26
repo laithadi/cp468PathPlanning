@@ -22,9 +22,13 @@ def readTextFile():
         robots[i+1] = lines[start+i].split(" ")
 
     target_point = lines[start+num_rob].split(" ") # grabs the rendezvous point from the input.txt file. data type --> list 
+    target_point[0] = int(target_point[0])
+    target_point[1] = int(target_point[1])
+    target_point.remove("\n")
+    new_target_point = (target_point[0], target_point[1])
 
-    rows = int(room_dim[0])  # the number of rows in the room 
-    cols = int(room_dim[1])  # the number of columns in the room 
+    rows = new_room_dim[0]  # the number of rows in the room 
+    cols = new_room_dim[1]  # the number of columns in the room 
     temp = lines[start+num_rob+1:] # this is a list of lines that contains the room points information from input.txt 
 
     room = [] # this is where we will store the 2d list of the room 
@@ -37,7 +41,7 @@ def readTextFile():
 
     f.close() # close the reading of input.txt
 
-    return new_room_dim, robots, target_point, room
+    return new_room_dim, robots, new_target_point, room
 
 
 def validMoves(room, pos, room_dim):
