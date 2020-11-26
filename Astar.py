@@ -1,5 +1,7 @@
 import copy
-from utils import validMoves
+from utils import validMoves, readTextFile
+
+ROOMDIM, _, TARGET_POINT, ROOM = readTextFile()
 
 def Astar(current, goal, heuristic):
     """
@@ -47,7 +49,8 @@ def Astar(current, goal, heuristic):
 
         if currNode == goal:
             return closed_list
-
+        else:
+            g_score += 1
         
         
 
