@@ -3,7 +3,7 @@ from utils import validMoves, readTextFile
 
 ROOMDIM, _, TARGET_POINT, ROOM = readTextFile()
 
-def Astar(current, goal, heuristic):
+def Astar(current, goal):
     """
     Takes the current state of the robots in the musuem
     and returns the path they take to get to the goal state
@@ -22,13 +22,14 @@ def Astar(current, goal, heuristic):
     open_list.append(current)
     
     # Run this loop whil there is still possible moves in the list.
-    while len(open_list > 0):
+    while len(open_list)> 0:
         currIndex = 0
         currNode = open_list[0] #our current Node
         closed_list.append(currNode)
-        moves = validMoves(currNode) #switch validmoves to only take tmep which is the current node.
+        moves = validMoves(ROOM, currNode,ROOMDIM ) #switch validmoves to only take tmep which is the current node.
 
         for index, move in enumerate(open_list): #Might not need this
+            print("Current {}, goal {}".format(move, goal))
             if (int(g_score + manhatton(move, goal))) < int(g_score + manhatton(currNode, goal)):
                 currNode = move
                 currIndex = index
@@ -62,11 +63,10 @@ def manhatton(current, goal):
     """
     length = len(current)
     manhatton = 0
-
     for x in range(length):
         for y in range(length):
-            if current[x][y] != 0 or current[x][y] != 0:
-                (goalx, goaly) = get_index(goal, current[x][y])
+            if current != (0,0):
+                (goalx, goaly) = get_index(goal, current)
                 manhatton += abs(x - goalx) + abs(y - goaly)
     return manhatton
 
