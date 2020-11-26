@@ -1,4 +1,4 @@
-from utils import readTextFile, validMoves, targetReached
+from utils import readTextFile, validMoves, targetReached, strToInt
 
 room_dim, robots, target_point, room = readTextFile() # calling the readTextFile() to grab all the important information from the input.txt file 
 
@@ -8,6 +8,8 @@ print(room_dim)
 print('\n')
 print("this is a dictionary of the robots and their starting points: ")
 print(robots)
+newrob = strToInt(robots)
+print(newrob)
 print('\n')
 print("this is the target point or rendezvous point: ")
 print(target_point)
