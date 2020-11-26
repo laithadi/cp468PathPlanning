@@ -61,10 +61,7 @@ def manhatton(current, goal):
     """
     Calculates the best choice for each move
     """
-    length = len(current)
-    manhatton = 0
-
-
+    
     currX = current[0]
     currY = current[1]
 
