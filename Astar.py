@@ -11,6 +11,7 @@ def Astar(current, goal):
     """
     #TODO: currNode does not get updated
     #Same value is being appended inside of closed_list
+    print("ROOM DIM {}".format(ROOMDIM))
     curr_state = copy.deepcopy(current)
     goal_state = copy.deepcopy(goal)
 
@@ -29,26 +30,26 @@ def Astar(current, goal):
         currNode = open_list[0] #our current Node
         #closed_list.append(currNode) #take out
         moves = validMoves(ROOM, currNode, ROOMDIM ) #switch validmoves to only take tmep which is the current node.
-
+        """
         for index, move in enumerate(open_list): #Might not need this
             #print("Current {}, goal {}".format(move, goal))
             if (int(g_score + manhatton(move, goal))) < int(g_score + manhatton(currNode, goal)):
                 currNode = move
                 currIndex = index
-
-        open_list.pop() #pop off old move
-        closed_list.append(currNode) #Add best value to our closed list
-
+        """
+        #open_list.pop() #pop off old move
+        #closed_list.append(currNode) #Add best value to our closed list
+        temp_scores = {}
         for index, move in enumerate(moves):
-            temp_score = int(g_score + manhatton(move, goal))
-            if move not in closed_list:
-                if temp_score < f_score: #Compare the closest node
-                    currNode = move #Assign our best move to currNode
-                    currIndex = index
-                    f_score = temp_score
+            temp_scores[move] = (int(g_score + manhatton(move, goal)))
+        temp = sorted(temp_scores.keys(), key=lambda x: x[1])
+        print(temp)
+        x = open_list.pop() 
+        closed_list.append(x)
+        print(temp_scores.keys())
+        currNode = temp[-1]
         open_list.append(currNode)
-            
-            
+        
 
         if currNode == goal:
             return closed_list

@@ -15,7 +15,7 @@ print("this is the target point or rendezvous point: ")
 print(target_point)
 print('\n')
 print("this is the room in a 2d list:")
-print(room)
+#print(room)
 for i in range(0, int(room_dim[0])):
     print(room[i])
 # -----------------------------------------------------------------------------------------------------------------------------------------------------------------#
