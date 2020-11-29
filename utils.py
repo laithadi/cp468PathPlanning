@@ -67,7 +67,7 @@ def validMoves(room, pos, room_dim):
     if pos_col - 1 >= 0: # cheching if moving left is a valid move
         if room[pos_row][pos_col-1] == 0: possible_moves.append((pos_row, pos_col-1))
 
-    if pos_col + 1 <= width: # checking if moving right is a valid move 
+    if pos_col + 1 < width: # checking if moving right is a valid move 
         if room[pos_row][pos_col+1] == 0: possible_moves.append((pos_row, pos_col+1))
 
     return possible_moves
