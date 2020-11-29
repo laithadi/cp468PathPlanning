@@ -15,13 +15,12 @@ print("this is the target point or rendezvous point: ")
 print(target_point)
 print('\n')
 print("this is the room in a 2d list:")
-print(room)
 for i in range(0, int(room_dim[0])):
     print(room[i])
 # -----------------------------------------------------------------------------------------------------------------------------------------------------------------#
 # -----------------------------------------------------Testing the validMoves()-------------------------------------------------------------------#
 print('\n')
-moves = validMoves(room, robots[1], room_dim)
+moves = validMoves(room, (2,9), room_dim)
 print("Here are the valid moves robot 1 can make:")
 print(moves)
 # -----------------------------------------------------------------------------------------------------------------------------------------------------------------#
