@@ -30,7 +30,7 @@ def aStar(start, finish):
 
         node_current = getCurrentNode(open_list) # select the node with the least cost in open_list 
 
-        if node_current.index == node_target.index: break # if we reached the rendezvous point, break 
+        if node_current.index == node_target.index: return "YAY" # if we reached the rendezvous point, break 
 
         moves = validMoves(ROOM, node_current.index, ROOM_DIM) # get all the valid moves 
 
@@ -42,12 +42,8 @@ def aStar(start, finish):
             if node_successor.index == node_target.index: return "YAY"
 
 
-            if !(inOpen(node_successor, open_list)): # we have not come accross this node 
-                if !(inClosed(node_successor, closed_list)):  
-                    open_list.append(node_successor) # add to the open_list 
-                else: continue
-            
-            else: continue
+            if (not inOpen(node_successor, open_list)) and (not inClosed(node_successor, closed_list)): # we have not come accross this node 
+                open_list.append(node_successor) # add to the open_list
 
 
         open_list.remove(node_current) # remove the node_current to not visit it again 
@@ -83,18 +79,18 @@ def inOpen(node, open_list):
     ind = node.index
 
     for n in open_list:
-        if n.index == ind: return False 
+        if n.index == ind: return True 
 
-    return True 
+    return False 
 
 def inClosed(node, closed_list):
 
     ind = node.index
 
     for n in closed_list:
-        if n.index == ind: return False 
+        if n.index == ind: return True 
 
-    return True 
+    return False
 
 
 
