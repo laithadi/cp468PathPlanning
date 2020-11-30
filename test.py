@@ -1,7 +1,8 @@
-from utils import readTextFile, validMoves, targetReached, strToInt
-from Astar import *
+# from utils import readTextFile, validMoves, targetReached, strToInt
+# from Astar import *
+import random
 
-room_dim, robots, target_point, room = readTextFile() # calling the readTextFile() to grab all the important information from the input.txt file 
+# room_dim, robots, target_point, room = readTextFile() # calling the readTextFile() to grab all the important information from the input.txt file 
 
 # # ----------------------------------------------This code right here is to just test and show that what the readTextFile() returns---------------------------------#
 # print('This is the room dimensions: ')
@@ -48,3 +49,9 @@ room_dim, robots, target_point, room = readTextFile() # calling the readTextFile
 # print(manhatton(up, target))
 # print(manhatton(down, target))
 # -----------------------------------------------------------------------------------------------------------------------------------------------------------------#
+
+
+for i in range(0, 20):
+    print('\n')
+    for j in range(0, 25):
+        print(random.randint(0,1), end='')
