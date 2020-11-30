@@ -52,22 +52,24 @@ def validMoves(room, pos, room_dim):
 
     possible_moves = [] # where we will store tuples of possible moves that are valid
 
-    length = room_dim[0] # the length of the room 
-    width = room_dim[1] # the width of the room 
+    max_row = room_dim[0] # the length of the room 
+    max_col = room_dim[1] # the width of the room 
 
     pos_row = pos[0] # the pos row that we are moving from 
     pos_col = pos[1] # the pos col that we are moving from 
+    # print('pos_row {} and pos_col {}'.format(pos_row, pos_col))
+
 
     if pos_row - 1 >= 0: # checking if moving up is a valid move 
         if room[pos_row-1][pos_col] == 0: possible_moves.append((pos_row-1, pos_col))
 
-    if pos_row + 1 <= length: # checking if moving down is a valid move 
+    if pos_row + 1 < max_row: # checking if moving down is a valid move 
         if room[pos_row+1][pos_col] == 0: possible_moves.append((pos_row+1, pos_col))
     
-    if pos_col - 1 >= 0: # cheching if moving left is a valid move
+    if (pos_col - 1 >= 0) and (0 <= pos_row < max_row): # cheching if moving left is a valid move
         if room[pos_row][pos_col-1] == 0: possible_moves.append((pos_row, pos_col-1))
 
-    if pos_col + 1 < width: # checking if moving right is a valid move 
+    if (pos_col + 1 < max_col) and (0 <= pos_row < max_row): # checking if moving right is a valid move 
         if room[pos_row][pos_col+1] == 0: possible_moves.append((pos_row, pos_col+1))
 
     return possible_moves
