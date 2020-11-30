@@ -60,10 +60,10 @@ def validMoves(room, pos, room_dim):
     # print('pos_row {} and pos_col {}'.format(pos_row, pos_col))
 
 
-    if pos_row - 1 >= 0: # checking if moving up is a valid move 
+    if (pos_row - 1 >= 0) and (0 <= pos_col < max_col): # checking if moving up is a valid move 
         if room[pos_row-1][pos_col] == 0: possible_moves.append((pos_row-1, pos_col))
 
-    if pos_row + 1 < max_row: # checking if moving down is a valid move 
+    if (pos_row + 1 < max_row) and (0 <= pos_col < max_col): # checking if moving down is a valid move 
         if room[pos_row+1][pos_col] == 0: possible_moves.append((pos_row+1, pos_col))
     
     if (pos_col - 1 >= 0) and (0 <= pos_row < max_row): # cheching if moving left is a valid move
