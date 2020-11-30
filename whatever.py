@@ -42,8 +42,8 @@ def aStar(start, finish):
             if node_successor.index == node_target.index: return "YAY"
 
 
-            if node_successor not in open_list: # we have not come accross this node 
-                if node_successor not in closed_list:  
+            if !(inOpen(node_successor, open_list)): # we have not come accross this node 
+                if !(inClosed(node_successor, closed_list)):  
                     open_list.append(node_successor) # add to the open_list 
                 else: continue
             
@@ -77,6 +77,24 @@ def getCurrentNode(open_list):
 
     return currNode 
 
+
+def inOpen(node, open_list):
+
+    ind = node.index
+
+    for n in open_list:
+        if n.index == ind: return False 
+
+    return True 
+
+def inClosed(node, closed_list):
+
+    ind = node.index
+
+    for n in closed_list:
+        if n.index == ind: return False 
+
+    return True 
 
 
 
