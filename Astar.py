@@ -43,6 +43,7 @@ def Astar(current, goal):
         for index, move in enumerate(moves):
             temp_scores[move] = (int(g_score + manhatton(move, goal)))
         temp = sorted(temp_scores.keys(), key=lambda x: x[1])
+        print("hello")
         print(temp)
         x = open_list.pop() 
         closed_list.append(x)
@@ -54,10 +55,7 @@ def Astar(current, goal):
         if currNode == goal:
             return closed_list
         else:
-            g_score += 1
-        
-        
-
+            g_score += 1    
 
 
 def manhatton(current, goal):
