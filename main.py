@@ -17,8 +17,9 @@ i = 1  # counter just for naming the keys in the all_paths dictionary
 for key in r_keys: 
     current = robots[key] # setting the starting tuple for the astar function 
     goal = target_point # the goal for the astar() is the target point 
+    print('start')
     path = aStar(current, goal) # calling the astar() and assigning the returned list to paths 
-
+    print("done")
     all_paths['Robot'+str(i)] = path # adding the path for the robot in the all_paths dictionary for the right key naming 
     i += 1 # add one to i so next time we name the key for the robots path, its the right robot
 
