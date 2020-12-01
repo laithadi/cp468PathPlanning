@@ -1,36 +1,70 @@
-from utils import *
-from Astar import *
-from whatever import * 
+# IMPORTS 
+from utils import readTextFile, validRendezvousPoint
+from aStarPathFinder import aStar 
 
+# "welcome" message to indicate the start of the program 
+print("\n\n\n")
 print("Welcome to our Path Planning Term Project :)")
+print("We are going to plan the paths for each robot. The hope is we can get them to the rendezvous point at night. The trick is to avoid any obstacles in the way. HERE WE GO ! ")
+print("\n")
 
-room_dim, robots, target_point, room = readTextFile() # calling the readTextFile() to grab all the important information from the input.txt file 
+# calling the readTextFile() to grab all the important information from the input.txt file 
+room_dim, robots, target_point, room = readTextFile() 
 
-print(room_dim)
+print("Room dimensions ==> {}\nNumber of robots and their starting coordinates ==> {}\nRendezvous point ==> {}\nThe museum:".format(room_dim,robots,target_point))
+for row in room:
+    print(row)
+print("\n")
+print("\n")
+# find paths for robots only if the rendezvous point is valid (0) 
+if validRendezvousPoint(room, target_point): 
 
-robots = strToInt(robots) # turn all values in the robots value to int 
-r_keys = robots.keys() # grab all the keys in the robots dictionary 
+    # list of keys in the robots dictionary
+    robots_keys = robots.keys()  
+    # storing all final paths for each robot
+    all_paths = {}  
+    # counter for naming the keys in all_paths
+    i = 1   
 
-all_paths = {} # dictionary we are storing all final paths for each robot 
-i = 1  # counter just for naming the keys in the all_paths dictionary 
+    for key in robots_keys: 
+        # starting tuple for the astar function is the value of the key in the robots dictionary
+        current = robots[key] 
+        # goal tuple for the astar() is the target (rendezvous) point
+        goal = target_point  
+        # calling aStar() and assigning the returned list to paths
+        path = aStar(current, goal)  
+        # adding the path for the robot in the all_paths 
+        all_paths['Robot '+str(i)] = path 
+        # increment i 
+        i += 1 
 
-for key in r_keys: 
-    current = robots[key] # setting the starting tuple for the astar function 
-    goal = target_point # the goal for the astar() is the target point 
-    print('start')
-    path = aStar(current, goal) # calling the astar() and assigning the returned list to paths 
-    print("done")
-    all_paths['Robot'+str(i)] = path # adding the path for the robot in the all_paths dictionary for the right key naming 
-    i += 1 # add one to i so next time we name the key for the robots path, its the right robot
+    # list of keys for all_paths 
+    ap_keys = all_paths.keys() 
 
-ap_keys = all_paths.keys() # getting all the keys for all_paths 
+    # printing the path for each robot
+    for key in ap_keys:  
+        # printing which robot the path belongs to 
+        print("The path for {} is...\n".format(key)) 
+        # retrieving the path list from all_paths
+        pathlist = all_paths[key]
+        # check to see if there is a way for the robot to get to the rendezvous point  
+        if pathlist:
+            # printing the index, g_score, h_score of each node 
+            for node in pathlist:
+                print("{}".format(node.index))
+                print("\n")
+                # f(n) = g(n) + h(n)
+                print("g(n): {:>7}          h(n): {:>7}".format(node.g_score, node.h_score))
+                print("\n")
+            print("\n\n")
+        # no path for robot       
+        else:
+            print("This robot couldn't make it :( ")
+            print("\n\n")
 
-for key in ap_keys: # this for loop just goes through the all_paths dictionary and prints each path 
-    print("The path for {} is...\n".format(key)) 
-    pathlist = all_paths[key]
-    for node in pathlist:
-        print(node.index)
-    print('\n')
 
+    print("The end :) ") # the end 
 
-print("Success, all robots have reached the rendezvous point :) ") # the end 
+# the rendezvous point is an obstacle itself so the robots cant get there 
+else: 
+    print("INVALID RENDEZVOUS POINT ... rendezvous point cannot be an obstacle itself  :( ")
