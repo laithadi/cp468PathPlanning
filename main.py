@@ -1,4 +1,5 @@
 # IMPORTS 
+import copy
 from utils import readTextFile, validRendezvousPoint
 from aStarPathFinder import aStar 
 
@@ -43,6 +44,8 @@ if validRendezvousPoint(room, target_point):
 
     # printing the path for each robot
     for key in ap_keys:  
+        # deepcopy the room 2D list to show the path
+        path_room = copy.deepcopy(room) 
         # printing which robot the path belongs to 
         print("The path for {} is...\n".format(key)) 
         # retrieving the path list from all_paths
@@ -51,11 +54,18 @@ if validRendezvousPoint(room, target_point):
         if pathlist:
             # printing the index, g_score, h_score of each node 
             for node in pathlist:
-                print("{}".format(node.index))
-                print("\n")
-                # f(n) = g(n) + h(n)
-                print("g(n): {:>7}          h(n): {:>7}".format(node.g_score, node.h_score))
-                print("\n")
+                # replace the 0 to a * to show path 
+                path_room[node.index[0]][node.index[1]] = 4
+                # print the index 
+                # print("{}".format(node.index))
+                # print("\n")
+                # # f(n) = g(n) + h(n)
+                # print("g(n): {:>7}          h(n): {:>7}".format(node.g_score, node.h_score))
+                # print("\n")
+            # print the final room with the path on it as * 
+            for row in path_room:
+                print(row)
+                print('\n')
             print("\n\n")
         # no path for robot       
         else:
