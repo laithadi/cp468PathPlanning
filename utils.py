@@ -10,7 +10,7 @@ def readTextFile():
     """
 
     # opening input.txt file to access the information 
-    f = open("input.old.txt", "r") 
+    f = open("input.txt", "r") 
     # reads every line in input.txt file stores each line in a list 
     lines = f.readlines() 
 
@@ -19,7 +19,7 @@ def readTextFile():
     # switching the elements for the room_dim to data tpe -> int 
     room_dim[0] = int(room_dim[0])
     room_dim[1] = int(room_dim[1])
-    room_dim.remove('\n')
+    # room_dim.remove('\n')
     # final tuple with int x,y coordinates 
     new_room_dim = (room_dim[0], room_dim[1])
 
@@ -56,7 +56,7 @@ def readTextFile():
     target_point[0] = int(target_point[0])
     target_point[1] = int(target_point[1])
     # remove the extra line at the end of the list 
-    target_point.remove("\n")
+    # target_point.remove("\n")
     # place the coordinates into a tuple to make it easier for us to use later on 
     new_target_point = (target_point[0], target_point[1])
 
