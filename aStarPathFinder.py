@@ -5,7 +5,6 @@ from node import Node
 # GLOBAL VARIABLES 
 ROOM_DIM, _, TARGET_POINT, ROOM = readTextFile()
 
-
 def aStar(start, finish):
     """
     parameters:
@@ -86,7 +85,6 @@ def getCurrentNode(open_list):
     returns:
         currNode: a Node() with the lowest node.cost in open_list. 
     """
-
     temp = 99999 
 
     # each node in the open_list
@@ -111,7 +109,6 @@ def inOpen(node, open_list):
         boolean: True if node is in open_list. 
                  False otherwise.
     """
-
     # index of the node 
     ind = node.index
 
@@ -133,7 +130,6 @@ def inClosed(node, closed_list):
         boolean: True if node is in closed_list. 
                  False otherwise.
     """
-
     # index of the node 
     ind = node.index
 
@@ -155,7 +151,6 @@ def manhatton(current, goal):
     returns: 
         the manhattan value. (int)
     """
-    
     # get the x and y coordinates of the current point
     currX = current[0]
     currY = current[1]

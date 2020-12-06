@@ -10,7 +10,7 @@ def readTextFile():
     """
 
     # opening input.txt file to access the information 
-    f = open("input.old.txt", "r") 
+    f = open("input.txt", "r") 
     # reads every line in input.txt file stores each line in a list 
     lines = f.readlines() 
 
@@ -96,7 +96,6 @@ def validMoves(room, pos, room_dim):
                 tuples are coordinates of valid moves. Meaning a coordinate contains
                 a 0 in the room. tuples stored in a list. 
     """
-
     # where we will store tuples of possible moves that are valid
     possible_moves = [] 
 
@@ -139,7 +138,6 @@ def validRendezvousPoint(room, target_point):
         boolean: True if rendezvous point is valid (0). 
         False otherwise. 
     """
-    
     # x and y coordinates of the rendezvous point 
     x_cor = target_point[0]
     y_cor = target_point[1]
