@@ -13,8 +13,8 @@ print("\n")
 room_dim, robots, target_point, room = readTextFile() 
 
 print("Room dimensions ==> {}\nNumber of robots and their starting coordinates ==> {}\nRendezvous point ==> {}\nThe museum:".format(room_dim,robots,target_point))
-for row in room:
-    print(row)
+# for row in room:
+#     print(row)
 print("\n")
 print("\n")
 # find paths for robots only if the rendezvous point is valid (0) 
@@ -59,13 +59,13 @@ if validRendezvousPoint(room, target_point):
                 # print the index 
                 # print("{}".format(node.index))
                 # print("\n")
-                # # f(n) = g(n) + h(n)
+                # f(n) = g(n) + h(n)
                 # print("g(n): {:>7}          h(n): {:>7}".format(node.g_score, node.h_score))
                 # print("\n")
             # print the final room with the path on it as * 
             for row in path_room:
                 print(row)
-                print('\n')
+            #     print('\n')
             print("\n\n")
         # no path for robot       
         else:
