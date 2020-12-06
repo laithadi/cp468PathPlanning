@@ -23,7 +23,7 @@ def aStar(start, finish):
     # nodes that we have explored its moves
     closed_list = [] 
     # the depth we add to the total cost
-    g_score = 0   
+    g_score = 0  
 
     temp = True 
 
@@ -72,16 +72,22 @@ def aStar(start, finish):
         # to keep track of nodes expanded 
         closed_list.append(node_current) 
 
-    # backtrack to append all the nodes in a list for the path 
-    path = [] 
-    while node_current.parent: # while there exists a node to back track 
-        path.append(node_current) # add node to path 
-        node_current = node_current.parent # move on to the next node 
-    
-    # reverse the path 
-    path.reverse()
+    # if open_list is not empty, that means we broke out of the while loop cause we reached the target point 
+    if open_list: 
+        # backtrack to append all the nodes in a list for the path 
+        path = [] 
+        while node_current.parent: # while there exists a node to back track 
+            path.append(node_current) # add node to path 
+            node_current = node_current.parent # move on to the next node 
+        
+        # reverse the path 
+        path.reverse()
 
-    return path 
+        return path 
+    
+    # open_list is empty, means that we exhausted all of our options and no path has been found
+    else: 
+        return []
 
 
 def getCurrentNode(open_list):
