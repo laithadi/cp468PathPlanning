@@ -25,6 +25,8 @@ def aStar(start, finish):
     # the depth we add to the total cost
     g_score = 0   
 
+    temp = True 
+
     # heuristic of the start node
     h_score_start_node = manhatton(start, finish)  
     # creating the node for the start coordinate 
@@ -37,7 +39,7 @@ def aStar(start, finish):
     open_list.append(node_start)  
 
     # as long as we have a node in the open_list
-    while open_list: 
+    while open_list and temp: 
 
         # select the node with the least cost in open_list 
         node_current = getCurrentNode(open_list) 
@@ -54,6 +56,11 @@ def aStar(start, finish):
         for move in moves:   
             # create node for child of node_current
             node_successor = Node(index= move, parent= node_current, g_score= g_score, h_score= manhatton(move, finish)) 
+
+            # check if the successor the target point 
+            if node_successor.index == node_target.index: 
+                temp = False
+                break
 
             # we have not come accross this node or expanded it 
             if (not inOpen(node_successor, open_list)) and (not inClosed(node_successor, closed_list)): 
