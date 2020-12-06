@@ -42,6 +42,7 @@ if validRendezvousPoint(room, target_point):
     # list of keys for all_paths 
     ap_keys = all_paths.keys() 
 
+
     # printing the path for each robot
     for key in ap_keys:  
         # deepcopy the room 2D list to show the path
@@ -51,7 +52,7 @@ if validRendezvousPoint(room, target_point):
         # retrieving the path list from all_paths
         pathlist = all_paths[key]
         # check to see if there is a way for the robot to get to the rendezvous point  
-        if pathlist:
+        if len(pathlist) != 0:
             # printing the index, g_score, h_score of each node 
             for node in pathlist:
                 # replace the 0 to a * to show path 
