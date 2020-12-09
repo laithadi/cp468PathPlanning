@@ -4,7 +4,6 @@ from utils import readTextFile, validRendezvousPoint
 from aStarPathFinder import aStar 
 
 # "welcome" message to indicate the start of the program 
-print("\n\n\n")
 print("Welcome to our Path Planning Term Project :)")
 print("We are going to plan the paths for each robot. The hope is we can get them to the rendezvous point at night. The trick is to avoid any obstacles in the way. HERE WE GO ! ")
 print("\n")
@@ -13,8 +12,8 @@ print("\n")
 room_dim, robots, target_point, room = readTextFile() 
 
 print("Room dimensions ==> {}\nNumber of robots and their starting coordinates ==> {}\nRendezvous point ==> {}\nThe museum:".format(room_dim,robots,target_point))
-# for row in room:
-#     print(row)
+for row in room:
+    print(row)
 print("\n")
 print("\n")
 # find paths for robots only if the rendezvous point is valid (0) 
@@ -41,7 +40,6 @@ if validRendezvousPoint(room, target_point):
 
     # list of keys for all_paths 
     ap_keys = all_paths.keys() 
-
 
     # printing the path for each robot
     for key in ap_keys:  
