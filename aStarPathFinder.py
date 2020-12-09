@@ -82,6 +82,9 @@ def aStar(start, finish):
             path.append(node_current) # add node to path 
             node_current = node_current.parent # move on to the next node 
         
+        # add the start node 
+        path.append(node_start)
+
         # reverse the path 
         path.reverse()
 
