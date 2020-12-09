@@ -76,6 +76,8 @@ def aStar(start, finish):
     if open_list: 
         # backtrack to append all the nodes in a list for the path 
         path = [] 
+        # add the rendezvous point 
+        path.append(node_target)
         while node_current.parent: # while there exists a node to back track 
             path.append(node_current) # add node to path 
             node_current = node_current.parent # move on to the next node 
