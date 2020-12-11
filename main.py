@@ -2,15 +2,12 @@
 import copy
 from utils import readTextFile, validRendezvousPoint
 from aStarPathFinder import aStar 
-
 # "welcome" message to indicate the start of the program 
 print("Welcome to our Path Planning Term Project :)")
 print("We are going to plan the paths for each robot. The hope is we can get them to the rendezvous point at night. The trick is to avoid any obstacles in the way. HERE WE GO ! ")
 print("\n")
-
 # calling the readTextFile() to grab all the important information from the input.txt file 
 room_dim, robots, target_point, room = readTextFile() 
-
 print("Room dimensions ==> {}\nNumber of robots and their starting coordinates ==> {}\nRendezvous point ==> {}\nThe museum:".format(room_dim,robots,target_point))
 for row in room:
     print(row)
@@ -18,14 +15,12 @@ print("\n")
 print("\n")
 # find paths for robots only if the rendezvous point is valid (0) 
 if validRendezvousPoint(room, target_point): 
-
     # list of keys in the robots dictionary
     robots_keys = robots.keys()  
     # storing all final paths for each robot
     all_paths = {}  
     # counter for naming the keys in all_paths
     i = 1   
-
     for key in robots_keys: 
         # starting tuple for the astar function is the value of the key in the robots dictionary
         current = robots[key] 
@@ -37,10 +32,8 @@ if validRendezvousPoint(room, target_point):
         all_paths['Robot '+str(i)] = path 
         # increment i 
         i += 1 
-
     # list of keys for all_paths 
     ap_keys = all_paths.keys() 
-
     # printing the path for each robot
     for key in ap_keys:  
         # deepcopy the room 2D list to show the path
@@ -69,10 +62,7 @@ if validRendezvousPoint(room, target_point):
         else:
             print("This robot couldn't make it :( ")
             print("\n\n")
-
-
     print("The end :) ") # the end 
-
 # the rendezvous point is an obstacle itself so the robots cant get there 
 else: 
     print("INVALID RENDEZVOUS POINT ... rendezvous point cannot be an obstacle itself  :( ")
